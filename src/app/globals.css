@@ -1,0 +1,273 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ════════════════════════════════════════════════════════════════
+   Apple Liquid Glass — design tokens
+   ════════════════════════════════════════════════════════════════ */
+:root {
+  /* Neutrals */
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --hover: #fbfbfd;
+  --text: #1d1d1f;
+  --text-body: #424245;
+  --text-2: #6e6e73;
+  --text-3: #86868b;
+  --text-4: #aeaeb2;
+  --faint: #d2d2d7;
+  --hairline: rgba(0, 0, 0, 0.07);
+  --track: #e8e8ed;
+
+  /* Accents */
+  --accent: #0071e3;
+  --accent-link: #0066cc;
+  --indigo: #5e5ce6;
+  --heat: #ff6b00;
+  --heat-bg: rgba(255, 107, 0, 0.1);
+  --live: #30d158;
+
+  /* Type */
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Radius tiers */
+  --r-pill: 999px;
+  --r-chip: 6px;
+  --r-thumb: 12px;
+  --r-sheet: 16px;
+  --r-card: 18px;
+  --r-panel: 22px;
+  --r-hero: 26px;
+
+  /* Two-layer shadows */
+  --sh-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.05);
+  --sh-panel: 0 1px 3px rgba(0, 0, 0, 0.05), 0 14px 40px rgba(0, 0, 0, 0.05);
+  --sh-lift: 0 12px 32px rgba(0, 0, 0, 0.1);
+  --sh-cta: 0 20px 54px rgba(0, 113, 227, 0.24);
+  --sh-overlay: 0 2px 8px rgba(0, 0, 0, 0.1), 0 30px 80px rgba(0, 0, 0, 0.24);
+
+  /* Layout */
+  --max-read: 720px;
+  --max-grid: 1080px;
+  --pad-x: 22px;
+
+  /* Motion */
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Tailwind HSL bridge */
+  --background: 240 11% 96%;
+  --foreground: 240 3% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 3% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 3% 12%;
+  --primary: 210 100% 45%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 11% 94%;
+  --secondary-foreground: 240 3% 12%;
+  --muted: 240 11% 94%;
+  --muted-foreground: 240 3% 44%;
+  --accent-hsl: 240 11% 94%;
+  --accent-foreground: 240 3% 12%;
+  --destructive: 25 100% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 90%;
+  --input: 0 0% 88%;
+  --ring: 210 100% 45%;
+}
+
+@layer base {
+  * {
+    border-color: var(--hairline);
+  }
+
+  html {
+    color-scheme: light;
+    font-optical-sizing: auto;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: rgba(0, 113, 227, 0.16);
+    color: var(--text);
+  }
+}
+
+/* Subtle light scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.14);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.24);
+}
+
+/* Sticky Liquid Glass Navigation with scroll-edge hairline */
+.apple-glass-nav {
+  background: rgba(245, 245, 247, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease-out-quart),
+    box-shadow 0.3s var(--ease-out-quart);
+}
+
+.apple-glass-nav.scrolled {
+  border-bottom-color: var(--hairline);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Native macOS Window Chrome (Vibrancy Sidebar & Unified Toolbar) */
+.mac-sidebar {
+  background: rgba(238, 238, 242, 0.78);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border-right: 1px solid var(--hairline);
+}
+
+.mac-toolbar {
+  background: rgba(245, 245, 247, 0.78);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s var(--ease-out-quart),
+    box-shadow 0.25s var(--ease-out-quart);
+}
+
+.mac-toolbar.scrolled {
+  border-bottom-color: var(--hairline);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.04);
+}
+
+.mac-traffic-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.14);
+}
+
+/* Unified Solid Panel */
+.apple-panel {
+  background: var(--surface);
+  border-radius: var(--r-panel);
+  box-shadow: var(--sh-panel);
+}
+
+/* Unified Panel Hairline Rows */
+.apple-row {
+  transition: background-color 0.15s var(--ease-out-quart);
+}
+
+.apple-row + .apple-row {
+  border-top: 1px solid var(--hairline);
+}
+
+.apple-row:hover {
+  background: var(--hover);
+}
+
+/* Pointer-down tactile press feedback */
+.apple-press {
+  transition: transform 0.15s var(--ease-out-quart),
+    background-color 0.15s var(--ease-out-quart),
+    box-shadow 0.15s var(--ease-out-quart);
+}
+
+.apple-press:active:not(:disabled) {
+  transform: scale(0.97);
+  transition: transform 100ms ease-out;
+}
+
+/* Live pulsing dot */
+@keyframes pulse-dot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(48, 209, 88, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(48, 209, 88, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(48, 209, 88, 0);
+  }
+}
+
+.apple-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--live);
+  animation: pulse-dot 2.2s infinite;
+}
+
+/* Accessibility: Reduced motion, transparency, and high contrast */
+@media (prefers-reduced-motion: reduce) {
+  .apple-press,
+  .apple-glass-nav,
+  .mac-toolbar,
+  .apple-row {
+    transition: opacity 200ms ease, background-color 200ms ease;
+    transform: none !important;
+  }
+
+  .apple-live-dot {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .apple-glass-nav,
+  .mac-toolbar {
+    background: var(--surface);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .mac-sidebar {
+    background: #ededf1;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .apple-glass-nav,
+  .mac-toolbar {
+    background: var(--surface);
+    border-bottom-color: rgba(0, 0, 0, 0.35);
+  }
+
+  .mac-sidebar {
+    background: #ededf1;
+    border-right-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .apple-panel {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+  }
+
+  .apple-row + .apple-row {
+    border-top-color: rgba(0, 0, 0, 0.2);
+  }
+}
